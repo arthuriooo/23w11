@@ -1,0 +1,913 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+@keyframes rotating {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(359deg); }
+}
+@keyframes moveLeft {
+  0% { left: 2% }
+  50% { left: 4% }
+  100% { left: 2% }
+}
+@keyframes moveRight {
+  0% { right: 2% }
+  50% { right: 4% }
+  100% { right: 2% }
+}
+/* ---- */
+@keyframes menuShadow {
+  0% { text-shadow: 0 0 0px white; }
+  100% { text-shadow: 0 0 6px white; }
+}
+/* ---- */
+@keyframes pull {
+  0% { top: 0; }
+  100% { top: 12%; }
+}
+@keyframes unpull {
+  0% { top: 12%; }
+  100% { top: 0; }
+}
+/* ---- */
+@keyframes push {
+  0% { box-shadow: 0 -2px 3px white; border: none; }
+  100% { box-shadow: 0 0px 1px white; border: 2px double white; }
+}
+@keyframes unpush {
+  0% { box-shadow: 0 0px 1px white; border: 2px double white; }
+  100% { box-shadow: 0 -2px 3px white; border: none; }
+}
+/* ---- */
+@keyframes login {
+  0% { width: 150px; height: 150px; right: 0; top: 130px; }
+  50% { width: 160px; height: 160px; right: -5px; top: 125px; }
+  100% { width: 150px; height: 150px; right: 0; top: 130px; }
+}
+
+@keyframes radioButt {
+  0% {box-shadow: 0px -4px 5px white; background-color: rgba(224, 87, 83, 0.7);}
+  50% {box-shadow: 0px 0px 15px rgba(224, 87, 83, 1); background-color: rgba(224, 87, 83, 0.85);}
+}
+@keyframes radioButtRev {
+  0% {box-shadow: 0px 0px 15px rgba(224, 87, 83, 1); background-color: rgba(224, 87, 83, 0.85);}
+  50% {box-shadow: 0px -4px 5px white; background-color: rgba(224, 87, 83, 0.7);}
+}
+
+@keyframes picsAnimation {
+  0% {
+    width: 100%;
+    top: 0%;
+    left: 0%;
+    filter: blur(0px) brightness(1);
+  }
+  50% {
+    width: 120%;
+    top: -10%;
+    left: -10%;
+    filter: blur(5px) brightness(0.5);
+  }
+}
+
+/* ----------- */
+
+#page {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+
+/* ---------------- */
+
+#birthCut {
+  position: absolute;
+  width: 130%;
+  top: -18%;
+  left: -15%;
+
+  z-index: 3;
+
+  padding: 0;
+  margin: 0;
+}
+
+/* -------------------- */
+
+#frontLayer {
+  width: 100%;
+  height: 93%;
+  position: absolute;
+  box-shadow: 0 0 12px black;
+
+  z-index: 10;
+}
+
+/* ------------- */
+
+#topButtons {
+  position: absolute;
+  width: 15%;
+  height: 20%;
+  left: 42.5%;
+  top: -4%;
+
+  z-index: 20;
+}
+
+#uv {
+  position: absolute;
+  width: 42%;
+  left: 0;
+  height: 80%;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  cursor: pointer;
+  border-bottom: 2px solid white;
+
+  background-color: rgba(32, 37, 42, 0.5);
+}
+
+#uvButton {
+  position: absolute;
+  width: 50%;
+  left: 25%;
+  bottom: 18%;
+}
+
+#lock {
+  position: absolute;
+  width: 42%;
+  right: 0;
+  height: 80%;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  cursor: pointer;
+  border-bottom: 2px solid white;
+
+  background-color: rgba(32, 37, 42, 0.5);
+}
+
+#lockButton {
+  position: absolute;
+  width: 50%;
+  left: 25%;
+  bottom: 20%;
+}
+
+.uvHover, .lockHover {
+  animation-name: pull;
+  animation-duration: 0.5s;
+
+  top: 12%;
+}
+.uvUnHover, .lockUnHover {
+  animation-name: unpull;
+  animation-duration: 0.5s;
+
+  top: 0;
+}
+
+/* ------------ */
+
+#bottomDecoration {
+  height: 10%;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background-color: blue;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+#maxLine {
+  width: 100%;
+  height: 10%;
+  position: absolute;
+
+  z-index: 5;
+}
+
+#language {
+  position: absolute;
+  top: 15%;
+  left: 1%;
+  width: 120px;
+  display: inline-block;
+  height: 50px;
+  padding: 0;
+}
+#languagewrap {
+  height: 80%;
+  width: 100%;
+  position: absolute;
+  top: 10%;
+  border-radius: 15px;
+  border: 2px solid rgba(255,255,255,1);
+  box-sizing: border-box;
+  overflow: hidden;
+  background-color: rgba(49, 49, 49, 0.5);
+}
+#trigger {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  background-color: rgba(255,255,255,1);
+}
+#en,#ru {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  z-index: 5;
+  cursor: pointer;
+}
+#en {
+  left: 0;
+  border-right: 2px solid rgba(255,255,255,1);
+}
+#ru {
+  right: 0;
+}
+#en p, #ru p {
+  text-align: center;
+  top: 50%;
+  margin-top: 0.35em;
+  font-size: 20px;
+  color: rgba(255,255,255,1);
+}
+#en p {
+  color: black;
+}
+
+#search {
+  position: absolute;
+  right: 0;
+  top: 10px;
+  width: 400px;
+  height: 70px;
+}
+#searchButton {
+  position: absolute;
+  width: 60px;
+  right: 15px;
+  cursor: pointer;
+}
+#searchPanel {
+  width: 100%;
+  position: absolute;
+  top: -110%;
+  height: 100%;
+  /*border-radius: 20px;
+  background-color: rgba(49, 49, 49, 0.5);*/
+}
+#searchPanel input {
+  width: 68%;
+  position: absolute;
+  height: 40%;
+  border-radius: 25px;
+  background-color: rgba(32, 37, 42, 0.5);
+  font-size: 25px;
+  padding: 7px 90px 7px 15px;
+  border: none;
+  box-shadow: 0 2px 3px white;
+  color: white;
+  text-transform: uppercase;
+}
+#searchPanel input::placeholder {
+  text-transform: lowercase;
+}
+#searchReady {
+  position: absolute;
+  right: 75px;
+  top: 7px;
+  height: 30px;
+  cursor: pointer;
+}
+#searchCancel {
+  position: absolute;
+  right: 38px;
+  top: 7px;
+  height: 30px;
+  cursor: pointer;
+}
+
+#logoLine {
+  width: 100%;
+  height: 10em;
+  position: absolute;
+  top: 15%;
+}
+
+#logo {
+  position: relative;
+  width: 500px;
+  line-height: 10em;
+  margin: auto;
+}
+
+#logoText {
+  text-align: center;
+  font-size: 140px;
+  color: white;
+  text-shadow: 0 0 10px white;
+}
+
+#menuLine {
+  width: 100%;
+  position: absolute;
+  top: 35%;
+  z-index: 10;
+  text-align: center;
+  clear: both;
+}
+
+#menu {
+  display: inline;
+  width: auto;
+  position: relative;
+  white-space: nowrap;
+  list-style: none;
+}
+
+#menu li {
+  display: inline-block;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  text-decoration: none;  
+  padding: 5px;
+  cursor: pointer;
+}
+
+#menu li:hover {
+  animation-name: menuShadow;
+  animation-duration: 0.4s;
+
+  text-shadow: 0 0 6px white;
+}
+
+#videoLine {
+  position: absolute;
+  width: 100%;
+  height: 55px;
+  top: 45%;
+}
+
+#picsLine {
+  position: absolute;
+  width: 100%;
+  height: 55px;
+  top: 56%;
+}
+
+#videoButton, #picsButton {
+  position: relative;
+  height: 90%;
+  width: 25%;
+  margin: 0 auto;
+  background-color: rgba(32, 37, 42, 0.5);
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+#watchVid, #watchPics {
+  text-align: center;
+  color: white;
+  line-height: 52px;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.videoPush, .picsPush {
+  animation-name: push;
+  animation-duration: 0.3s;
+
+  box-shadow: 0 0px 1px white; 
+  border: 2px double white;
+}
+.videoUnPush, .picsUnPush {
+  animation-name: unpush;
+  animation-duration: 0.5s;
+
+  box-shadow: 0 -2px 3px white;
+  border: none;
+}
+
+/*#picsButton {
+  position: relative;
+  height: 100%;
+  width: 30%;
+  margin: 0 auto;
+  background-color: green;
+  border-radius: 10px;
+}*/
+
+#radioLine {
+  /*background-color: rgba(32, 37, 42, 0.5);*/
+  position: absolute;
+  bottom: 2%;
+  left: 3%;
+  width: 94%;
+  height: 8%;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  border: rgba(156, 62, 71, 1);
+  box-shadow: inset 0 0 50px grey;
+}
+
+#radio {
+  position: absolute;
+  width: 90%;
+  left: 5%;
+  bottom: 5%;
+}
+
+#radioButton {
+  width: 170px;
+  height: 170px;
+  border-radius: 100px;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+  /*box-shadow: 0px -4px 5px white;*/
+  border: 2px solid rgba(224, 87, 83, 1);
+  box-sizing: border-box;
+  line-height: 170px;
+  font-size: 25px;
+  color: white;
+  cursor: pointer;
+}
+
+#controlRadio {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+}
+#playPauseDiv {
+  position: absolute;
+  width: 50%;
+  height: 60px;
+  left: 0;
+  top: -2px;
+  border-top-left-radius: 100px;
+  border-bottom-left-radius: 100px;
+}
+#stopDiv {
+  position: absolute;
+  width: 50%;
+  height: 60px;
+  right: 0;
+  top: -2px;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+}
+#playPause {
+  height: 48px; 
+  position: absolute;
+  left: 22px;
+  top: 6px;
+}
+#stop {
+  height: 48px; 
+  position: absolute;
+  right: 22px;
+  top: 6px;
+}
+#controlRadio div:hover {
+  background-color: rgba(224, 87, 83, 0.8);
+}
+
+#playPrev, #playNext {
+  z-index: 90;
+  width: 60px;
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  cursor: pointer;
+  display: none;
+}
+#playPrev:hover, #playNext:hover {
+  opacity: 1;
+}
+#playPrev {
+  transform: rotate(180deg);
+  right: 50%;
+}
+#playNext {
+  left: 50%;
+}
+
+.unHoverButt {
+  animation-name: radioButtRev;
+  animation-duration: 0.6s;
+  animation-iteration-count: 1;
+  box-shadow: 0px -4px 5px white;
+  background-color: rgba(224, 87, 83, 0.7);
+}
+.hoverButt {
+  animation-name: radioButt;
+  animation-duration: 0.6s;
+  animation-iteration-count: 1;
+  box-shadow: 0px 0px 15px rgba(224, 87, 83, 1);
+  background-color: rgba(224, 87, 83, 0.85);
+}
+
+/* ----------------- ==== -----------------*/
+
+#event {
+  position: absolute;
+  width: 100%;
+  height: 7%;
+  bottom: 0;
+  background: linear-gradient(to right, rgba(209, 79, 81, 1), rgba(234, 92, 85, 1));
+}
+
+#eventText {
+  line-height: 60px;
+  font-size: 25px;
+  text-align: center;
+  color: white;
+}
+
+/* ---------- === --- === --- === ---------- */
+
+ /******************/
+/*#page {
+  filter: blur(10px);
+}*/
+
+#darkBack {
+  display: none;
+  background-color: rgba(32, 37, 42, 0);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 190;
+}
+ 
+
+#loginPage {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 200;
+  top: -100%;
+}
+
+#login {
+  position: relative;
+  width: 900px;
+  height: 500px;
+  background-color: rgba(155, 54, 81, 1);
+  margin: 10% auto;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(155, 54, 81, 1);
+}
+
+#loginText {
+  text-align: center;
+  position: relative;
+  top: 40px;
+}
+#loginText1, #loginText2 {
+  display: inline-block;
+  position: relative;
+  color: rgba(32, 37, 42, 1);
+  font-size: 45px;
+  text-align: center;
+}
+#loginText1 {
+  display: inline-block;
+  color: rgba(155, 54, 81, 1);
+  font-size: 60px;
+  background-color: rgba(32, 37, 42, 1);
+  border-radius: 8px;
+  padding: 8px 15px;
+  box-shadow: 0 0 15px rgba(32, 37, 42, 1);
+  transform: rotate(-7deg);
+  margin-right: 20px; 
+}
+
+#loginForm {
+  position: relative;
+  width: 550px;
+  margin: 0 auto;
+}
+
+#loginForm input {
+  position: relative;
+  top: 130px;
+  width: 60%;
+  margin: 15px auto;
+  font-size: 25px;
+  padding: 8px 15px;
+  background-color: rgba(32, 37, 42, 1);
+  border: none;
+  color: rgba(155, 54, 81, 1);
+  text-align: right;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+#loginForm input::placeholder {
+  text-align: right;
+  color: rgba(155, 54, 81, 1);
+}
+
+#loginForm input[type="submit"] {
+  position: absolute;
+  right: 0;
+  width: 150px;
+  height: 150px;
+  border-radius: 300px;
+  margin: 0 auto;
+  box-shadow: 0 0 15px rgba(32, 37, 42, 1);
+  transform: rotate(7deg);
+  text-align: center;
+  border: 6px double rgba(155, 54, 81, 1);
+
+  animation-name: login;
+  animation-duration: 1.2s;
+  animation-iteration-count: infinite;
+}
+
+#closeLogin {
+  width: 60px;
+  height: 60px;
+  border-radius: 100px;
+  background-color: rgba(155, 54, 81, 1);
+  box-shadow: 0 0 15px rgba(155, 54, 81, 1);
+  position: relative;
+  margin: 0 auto;
+  top: -100px;
+  cursor: pointer;
+  z-index: 10;
+}
+#closeLogin img {
+  width: 80%;
+  position: absolute;
+  left: 10%;
+  top: 10%;
+}
+
+/* ------------------------------------------------------------ */
+/* ------------------------------------------------------------ */
+/* ------------------------------------------------------------ */
+/* ------------------------------------------------------------ */
+/* ------------------------------------------------------------ */
+
+#mainHeader {
+  width: 100%;
+  height: 70px;
+  position: absolute;
+  top: -70px;
+}
+#mainDarken {
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(32, 37, 42, 0.6);
+  box-shadow: inset 0px -8px 8px rgba(32, 37, 42, 0.2);
+}
+#mainHeaderBackground {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+  z-index: 5;
+}
+#mainHeaderBackground img {
+  width: 100%;
+  position: absolute;
+  top: 0;
+}
+#mainHeaderPanel {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: 50;
+  line-height: 70px;
+  overflow: hidden;
+}
+#mainHeaderPanel * {
+  display: inline-block;
+  float: left;
+}
+#mainLanguage {
+  color: white;
+  font-size: 22px;
+  margin-left: 15px;
+  display: inline-block;
+}
+#mainLanguage span {
+  margin: 0 8px;
+  cursor: pointer;
+}
+#mainEn:hover, #mainRu:hover {
+  text-shadow: 0 0 5px white;
+}
+#mainTopButtons {
+  margin: 0 20px 0 10px;
+}
+#mainTopButtons img {
+  height: 40px;
+  margin: 13px 10px;
+  cursor: pointer;
+}
+
+#mainLogo {
+  font-size: 105px;
+  color: white;
+  margin: 0 15px 0 60px;
+}
+#mainMenuLine {
+
+}
+#mainMenu {
+  margin: 0 15px;
+}
+#mainMenu li {
+  color: white;
+  margin: 0 8px;
+  font-size: 20px;
+  cursor: pointer;
+}
+#mainMenu li:hover {
+  text-shadow: 0 0 5px white;
+}
+
+#mainTopButtons {
+  margin: 0 20px 0 10px;
+  float: right;
+}
+#mainTopButtons img {
+  height: 40px;
+  margin: 13px 10px;
+  cursor: pointer;
+}
+
+#mainSearch {
+  float: right;
+}
+#mainSearch img {
+  height: 40px;
+  margin: 13px 20px;
+  cursor: pointer;
+}
+
+#mainTime {
+  background-color: transparent;
+}
+
+/* -------------- ---------- ------- ---- --- -- -*/
+
+#clip {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 120;
+  background-color: black;
+  display: none;
+}
+#closeVideo {
+  width: 4%;
+  position: absolute;
+  top: 15px;
+  left: 48%;
+  cursor: pointer;
+  z-index: 150;
+  opacity: 0.4;
+}
+#closeVideo:hover {
+  opacity: 1;
+}
+#dopeArt {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 20;
+}
+
+/* -------------- ---------- ------- ---- --- -- -*/
+
+#viewPics {
+  position: absolute;
+  z-index: 150;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(27, 27, 27, 0.8);
+
+  display: none;
+}
+
+#wholePic {
+  position: absolute;
+  width: 100%;
+  height: 70%;
+  top: 15%;
+  z-index: 300;
+}
+#wholePic img {
+  position: relative;
+  height: 100%;
+  width: auto;
+  margin: 0 auto;
+}
+
+#closePics {
+  position: relative;
+  cursor: pointer;
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  color: white;
+  background-color: rgba(166, 52, 93, 0.3);
+}
+
+.onePic {
+  position: relative;
+  width: 25%;
+  height: 30%;
+  overflow: hidden;
+  margin: 0;
+  display: inline-block;
+  cursor: pointer;
+}
+.onePic img {
+  width: 100%;
+}
+
+.onePic img:hover {
+  position: relative;
+  animation-name: picsAnimation;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  width: 120%;
+  top: -10%;
+  left: -10%;
+  filter: blur(5px) brightness(0.5);
+}
+
+/* -------------- ---------- ------- ---- --- -- -*/
+/* -------------- ---------- ------- ---- --- -- -*/
+/* -------------- ---------- ------- ---- --- -- -*/
+/* -------------- ---------- ------- ---- --- -- -*/
+/* -------------- ---------- ------- ---- --- -- -*/
+/* -------------- ---------- ------- ---- --- -- -*/
+/* -------------- ---------- ------- ---- --- -- -*/
+
+#musicPanel {
+  position: absolute;
+  top: 100px;
+  left: 5%;
+  width: 90%;
+  display: none;
+}
+#musicPanel li {
+  position: relative;
+  display: inline-block;
+  margin: 10px 12px;
+  list-style: none;
+  cursor: pointer;
+}
+#musicPanel a {
+  position: relative;
+  display: inline-block;
+  color: rgba(73, 73, 73, 1);
+  text-decoration: none;
+  box-shadow: inset 0 0 10px rgba(73, 73, 73, 1);
+  padding: 15px 20px;
+  border-radius: 25px;
+}
+
+.audiojs {
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
