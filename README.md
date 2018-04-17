@@ -1,7 +1,7 @@
 # 23w11
 
 ## The personal project 
-### Painter's portfolio
+### The portfolio site for painter
 
 #### Used in developing:
 * HTML
